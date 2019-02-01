@@ -2,6 +2,8 @@
 
 This package implements a safe grid search strategy for hyperparameter tunning. We use a coordinate descent algorithm to solve the optimization algorithms (though the choice of coordinate descent is "arbitrary" here: indeed any other optimization solver can be used as soon as it can output a duality gap). The approximation path algorithms and their complexity are based only on the duality gap computation to quantify the optimality of a vector at a given regularization parameter.
 
+See the paper https://arxiv.org/abs/1810.05471 for more details.
+
 ## Installation & Requirements
 
 We first need to install the optimization solvers ``safegridoptim`` and the compilation proceed as follows:

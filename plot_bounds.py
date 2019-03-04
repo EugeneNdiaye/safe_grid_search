@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from numpy.linalg import norm
 import seaborn as sns
 import numpy as np
+import os
 
 
 def set_style():
@@ -192,16 +193,19 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(1, figsize=(10, 4))
     compute_path(X, y, lambda_range, xi, mu, nu, tau=tau,
                  conservative=True, large_step=True, plot_other_side=True)
-    if saving_fig is True:
-
-        plt.savefig("../prebuiltimages/approximation_path_bilateral.pdf",
+    if saving_fig:
+        if not os.path.exists("img"):
+            os.makedirs("img")
+        plt.savefig("img/approximation_path_bilateral.pdf",
                     format="pdf")
     plt.show()
 
     fig, ax = plt.subplots(1, figsize=(10, 4))
     compute_path(X, y, lambda_range, xi, mu, nu, tau=tau,
                  conservative=True, large_step=False, plot_other_side=False)
-    if saving_fig is True:
-        plt.savefig("../prebuiltimages/approximation_path_unilateral.pdf",
+    if saving_fig:
+        if not os.path.exists("img"):
+            os.makedirs("img")
+        plt.savefig("img/approximation_path_unilateral.pdf",
                     format="pdf")
     plt.show()

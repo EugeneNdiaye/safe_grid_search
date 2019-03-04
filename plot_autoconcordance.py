@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import os
 
 def set_style():
     # This sets reasonable defaults for font size for
@@ -20,6 +20,7 @@ def set_style():
 
 plt.rcParams["text.usetex"] = True
 set_style()
+saving_fig = False  # active to True to save images
 
 
 def w_f(tau, nu):
@@ -50,5 +51,8 @@ plt.xlabel(r"$\tau$")
 plt.ylabel(r"$w_{\nu}(\tau)$")
 plt.legend()
 plt.tight_layout()
-plt.savefig("img/autoconco.pdf", format="pdf")
+if saving_fig:
+    if not os.path.exists("img"):
+        os.makedirs("img")
+    plt.savefig("img/autoconco.pdf", format="pdf")
 plt.show()

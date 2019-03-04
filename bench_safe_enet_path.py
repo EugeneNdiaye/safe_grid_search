@@ -9,6 +9,7 @@ import numpy as np
 import scipy as sp
 import pandas as pd
 import time
+import os
 
 full_time = time.time()
 
@@ -52,7 +53,6 @@ if dataset == "leukemia":
     y = y.astype(float)
 
 if dataset == "synthetic":
-
     n_samples, n_features = (100, 500)
     X, y = make_regression(n_samples=n_samples, n_features=n_features,
                            random_state=random_state)
@@ -207,7 +207,9 @@ if display_bench:
     ax1.set_xlabel(r"Size of the default grid")
     fig.tight_layout()
     fig.subplots_adjust(top=0.88)
-    if saving_fig is True:
+    if saving_fig:
+        if not os.path.exists("img"):
+            os.makedirs("img")
         plt.savefig("img/bench_" + algo + "_" + dataset +
                     "_grid_n_lambdas_tau" + str(int(tau)) + ".pdf",
                     format="pdf")

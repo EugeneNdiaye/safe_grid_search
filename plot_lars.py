@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LassoLars
 from sklearn import datasets
 from safe_enet_path import compute_path
+import os
 
 
 def set_style():
@@ -154,7 +155,9 @@ ax.set_xticklabels(["$\lambda_{\min}$", "$\lambda_{\max}$"])
 ax.set_xticks(np.array([lambda_min, lambda_max]))
 plt.legend(loc="best")
 plt.tight_layout()
-if saving_fig is True:
-    plt.savefig("../prebuiltimages/approx_lars_" + dataset + ".pdf",
+if saving_fig:
+    if not os.path.exists("img"):
+        os.makedirs("img")
+    plt.savefig("img/approx_lars_" + dataset + ".pdf",
                 format="pdf")
 plt.show()

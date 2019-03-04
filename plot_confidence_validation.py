@@ -8,6 +8,7 @@ import time
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.cm as cm
+import os
 
 
 def set_style():
@@ -158,6 +159,8 @@ plt.ylim((np.min(approx_errors) - delta_eps * 0.3,
 plt.ylabel(r"$\|y' - X'\beta^{(\lambda)}\|_2$")
 plt.legend(loc="upper center")
 plt.tight_layout()
-if saving_fig is True:
+if saving_fig:
+    if not os.path.exists("img"):
+            os.makedirs("img")
     plt.savefig("img/validation_" + dataset + ".pdf", format="pdf")
 plt.show()
